@@ -128,7 +128,13 @@ function createApps(){
       }],
       rating: rating,
       totalRating: totalRating,
-      totalRatings: totalRatings
+      totalRatings: totalRatings,
+      fiveStar: Math.ceil(totalRatings/2),
+      fourStar: Math.ceil(totalRatings/4),
+      threeStar: Math.ceil(totalRatings/8),
+      twoStar: Math.ceil(totalRatings/16),
+      oneStar: Math.ceil(totalRatings/32),
+      downloadURL: "https://s3-us-west-2.amazonaws.com/genycrew.android.apps/Color+Switch_v2.6.9_apkpure.com.apk"
     });
   }
   return apps;

@@ -3,36 +3,95 @@
   <sidebar></sidebar>
   <div class="col-lg-7 detail-container">
     <div class="well">
-      <div class="col-lg-3 icon-container">
-        <img src="assets/images/vlc.webp"/>
-      </div>
-      <div class="col-lg-9">
-        <div class="col-lg-12">
-          <h2>{{AppCtrl.application.name}}</h2>
+      <div class="row">
+        <div class="col-lg-3 icon-container">
+          <img src="assets/images/vlc.webp"/>
         </div>
-        <div class="col-lg-7">
-          <span>GenYCrew</span>
-        </div>
-        <div class="col-lg-5">
-          <div ng-if="AppCtrl.application.rating">
-            <star-rating ng-model="AppCtrl.application.rating" readonly="true"></star-rating>
-            <span>{{AppCtrl.application.totalRatings}}</span>
+        <div class="col-lg-9">
+          <div class="col-lg-12">
+            <h2>{{AppCtrl.application.name}}</h2>
+          </div>
+          <div class="col-lg-7">
+            <span>GenYCrew</span>
+          </div>
+          <div class="col-lg-5">
+            <div ng-if="AppCtrl.application.rating">
+              <star-rating ng-model="AppCtrl.application.rating" readonly="true"></star-rating>
+              <span>{{AppCtrl.application.totalRatings}}</span>
+            </div>
+          </div>
+          <div class="col-lg-4 col-lg-offset-8 margin-top-10">
+            <input type="button" class="btn btn-primary" value="DOWNLOAD" ng-click="AppCtrl.download()"/>
+            <div ng-if="AppCtrl.appInstalled">
+              <span>Installed</span>
+            </div>
           </div>
         </div>
-        <div class="col-lg-4 col-lg-offset-8 margin-top-10">
-          <input type="button" class="btn btn-primary" value="DOWNLOAD"/>
-        </div>
-      </div>
-      <div class="col-lg-12">
-        <ul rn-carousel rn-carousel-controls rn-carousel-buffered class="app-media">
-          <li><img src="assets/images/vlc.webp"/></li>
-          <li><img src="assets/images/vlc.webp"/></li>
-          <li><img src="assets/images/vlc.webp"/></li>
-          <li><img src="assets/images/vlc.webp"/></li>
-        </ul>
       </div>
       <div class="row">
-        <input type="button" ng-click="AppCtrl.openReviewModal()"/>
+        <div class="col-lg-12">
+          <ul rn-carousel rn-carousel-controls rn-carousel-buffered class="app-media">
+            <li><img src="assets/images/vlc.webp"/></li>
+            <li><img src="assets/images/vlc.webp"/></li>
+            <li><img src="assets/images/vlc.webp"/></li>
+            <li><img src="assets/images/vlc.webp"/></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <input type="button" ng-click="AppCtrl.openReviewModal()" value="Review"/>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <span>{{AppCtrl.application.rating}}</span>
+        </div>
+        <div class="col-lg-6 row">
+          <div class="col-lg-2">
+            <div class="col-lg-8 row">
+              <i class="fa fa-star" ></i>
+            </div>
+            <div class="col-lg-4">5</div>
+          </div>
+          <div class="col-lg-10 row">
+            <div class="rating-bar rating-five"></div>
+          </div>
+          <div class="col-lg-2">
+            <div class="col-lg-8 row">
+            <i class="fa fa-star" ></i>
+          </div>
+            <div class="col-lg-4">4</div>
+          </div>
+          <div class="col-lg-10 row">
+            <div class="rating-bar rating-four"></div>
+          </div>
+          <div class="col-lg-2">
+            <div class="col-lg-8 row">
+              <i class="fa fa-star" ></i>
+            </div>
+            <div class="col-lg-4">3</div>
+          </div>
+          <div class="col-lg-10 row">
+            <div class="rating-bar rating-three"></div>
+          </div>
+          <div class="col-lg-2">
+            <div class="col-lg-8 row">
+              <i class="fa fa-star" ></i>
+            </div>
+            <div class="col-lg-4">2</div>
+          </div>
+          <div class="col-lg-10 row">
+            <div class="rating-bar rating-two"></div>
+          </div>
+          <div class="col-lg-2">
+            <div class="col-lg-8 row">
+              <i class="fa fa-star" ></i>
+            </div>
+            <div class="col-lg-4">1</div>
+          </div>
+          <div class="col-lg-10 row">
+            <div class="rating-bar rating-one"></div>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div ng-repeat="review in AppCtrl.reviews" class="col-lg-6">

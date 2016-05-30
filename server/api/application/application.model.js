@@ -19,7 +19,13 @@ var ApplicationSchema = new mongoose.Schema({
   permissions: [ApplicationPermissionSchema],
   rating: Number,
   totalRating: Number,
-  totalRatings: Number
+  totalRatings: Number,
+  fiveStar: Number,
+  fourStar: Number,
+  threeStar: Number,
+  twoStar: Number,
+  oneStar: Number,
+  downloadURL: String
 });
 
 export default mongoose.model('Application', ApplicationSchema);

@@ -25,7 +25,12 @@ var ApplicationSchema = new mongoose.Schema({
   threeStar: Number,
   twoStar: Number,
   oneStar: Number,
-  downloadURL: String
+  downloadURL: String,
+  category: String,
+  paid: Boolean,
+  weekNumber: Number,
+  weekDownloads: Number,
+  age: Number
 });
 
 export default mongoose.model('Application', ApplicationSchema);

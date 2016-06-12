@@ -146,3 +146,24 @@ export function destroyReview(req, res) {
     .then(removeEntity(res))
     .catch(handleError(res));
 }
+
+// Gets top free applications
+export function topFree(req, res) {
+  Application.findAsync({paid: false}, {}, {sort: {weekNumber: -1, weekDownloads: -1}, limit: 7})
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+// Gets top paid applications
+export function topPaid(req, res) {
+  Application.findAsync({paid: true}, {}, {sort: {weekNumber: -1, weekDownloads: -1}, limit: 7})
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+// Gets top new applications
+export function topNew(req, res) {
+  Application.findAsync({}, {}, {sort: {age: 1, weekDownloads: -1}, limit: 7})
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}

@@ -38,8 +38,10 @@
           </ul>
         </div>
       </div>
-      <div class="row">
-        <input type="button" ng-click="AppCtrl.openReviewModal()" value="Review"/>
+      <div ng-if="AppCtrl.userApplication">
+        <div class="row">
+          <input type="button" ng-click="AppCtrl.openReviewModal()" value="Review"/>
+        </div>
       </div>
       <div class="row">
         <div class="col-lg-4">

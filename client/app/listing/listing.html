@@ -2,22 +2,33 @@
 <div class="row main-container">
   <sidebar></sidebar>
   <div class="col-lg-10">
-    <h3>Top Trending</h3>
+    <h3>{{ListingCtrl.category.name}}</h3>
     <div class="well">
-      <div ng-repeat="item in ListingCtrl.applications" class="app-container">
-        <div class="content" ng-click="ListingCtrl.openApplication(item._id)">
-          <div class="image-container">
-            <img src="assets/images/vlc.webp"/>
-          </div>
-          <div class="title-container">
-            <span>{{item.name}}</span>
-          </div>
-          <div class="rating-container">
-            <star-rating ng-model="item.rating" readonly="true"></star-rating>
-            <span class="price">{{item.price.currency + " " + item.price.amount}}</span>
+      <div class="loader" ng-if="!ListingCtrl.applications">
+        <span class="glyphicon glyphicon-refresh spinning"></span> Loading...
+      </div>
+      <div ng-if="ListingCtrl.applications">
+        <div ng-if="ListingCtrl.applications.length">
+          <div ng-repeat="item in ListingCtrl.applications" class="app-container">
+            <div class="content" ng-click="ListingCtrl.openApplication(item._id)">
+              <div class="image-container">
+                <img src="assets/images/vlc.webp"/>
+              </div>
+              <div class="title-container">
+                <span>{{item.name}}</span>
+              </div>
+              <div class="rating-container">
+                <star-rating ng-model="item.rating" readonly="true"></star-rating>
+                <span class="price">{{item.price.currency + " " + item.price.amount}}</span>
+              </div>
+            </div>
           </div>
         </div>
-    </div>
+        <div class="no-item" ng-if="!ListingCtrl.applications.length">
+          <i class="fa fa-frown-o"></i>
+          <br/>No Application found!
+        </div>
+      </div>
     </div>
   </div>
 </div>

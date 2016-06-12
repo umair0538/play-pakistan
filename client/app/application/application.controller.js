@@ -14,6 +14,7 @@
       this.userReview = null;
       this.user = null;
       this.appInstalled = false;
+      this.userApplication = null;
 
       if(Auth.isLoggedIn()){
         this.user = Auth.getCurrentUser();
@@ -44,6 +45,11 @@
         };
         this.userReview = response.data[0] || newReview;
       });
+      if(this.user){
+        $http.get('/api/users/' + this.user._id + '/applications/' + $stateParams.id).then(response => {
+          this.userApplication = response.data;
+        });
+      }
     }
 
     updateRatingBars() {

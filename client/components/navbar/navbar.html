@@ -15,6 +15,15 @@
             <a ui-sref="{{item.state}}">{{item.title}}</a>
         </li>
         <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
+
+        <li dropdown>
+          <a href="#" dropdown-toggle>Categories <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li ng-repeat="category in nav.categories"><a href="listings/category/{{category._id}}">{{category.name}}</a></li>
+          </ul>
+        </li>
+
+
       </ul>
       <div class="col-lg-5 col-lg-offset-2 search-container">
         <div class="input-group">

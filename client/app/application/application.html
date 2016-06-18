@@ -38,60 +38,81 @@
           </ul>
         </div>
       </div>
+      <div class="row description col-lg-12">
+        {{AppCtrl.application.description}}
+      </div>
       <div ng-if="AppCtrl.userApplication">
         <div class="row">
           <input type="button" ng-click="AppCtrl.openReviewModal()" value="Review"/>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-4">
-          <span>{{AppCtrl.application.rating}}</span>
+      <div class="row rating-row col-lg-12">
+        <div class="col-lg-2 col-lg-offset-3">
+          <div class="row rating-number">
+            <span>{{AppCtrl.application.rating}}</span>
+          </div>
+          <div class="row total-rating-block">
+            <div ng-if="AppCtrl.application.rating">
+              <star-rating ng-model="AppCtrl.application.rating" readonly="true"></star-rating>
+              <span>{{AppCtrl.application.totalRatings}}</span>
+            </div>
+          </div>
         </div>
         <div class="col-lg-6 row">
-          <div class="col-lg-2">
-            <div class="col-lg-8 row">
-              <i class="fa fa-star" ></i>
+          <div class="col-lg-12 row bar-block">
+            <div class="col-lg-3">
+              <div class="col-lg-8 row">
+                <i class="fa fa-star" ></i>
+              </div>
+              <div class="col-lg-4">5</div>
             </div>
-            <div class="col-lg-4">5</div>
-          </div>
-          <div class="col-lg-10 row">
-            <div class="rating-bar rating-five"></div>
-          </div>
-          <div class="col-lg-2">
-            <div class="col-lg-8 row">
-            <i class="fa fa-star" ></i>
-          </div>
-            <div class="col-lg-4">4</div>
-          </div>
-          <div class="col-lg-10 row">
-            <div class="rating-bar rating-four"></div>
-          </div>
-          <div class="col-lg-2">
-            <div class="col-lg-8 row">
-              <i class="fa fa-star" ></i>
+            <div class="col-lg-10 row">
+              <div class="rating-bar rating-five"></div>
             </div>
-            <div class="col-lg-4">3</div>
           </div>
-          <div class="col-lg-10 row">
-            <div class="rating-bar rating-three"></div>
-          </div>
-          <div class="col-lg-2">
-            <div class="col-lg-8 row">
-              <i class="fa fa-star" ></i>
+          <div class="col-lg-12 row bar-block">
+            <div class="col-lg-3">
+              <div class="col-lg-8 row">
+                <i class="fa fa-star" ></i>
+              </div>
+              <div class="col-lg-4">4</div>
             </div>
-            <div class="col-lg-4">2</div>
-          </div>
-          <div class="col-lg-10 row">
-            <div class="rating-bar rating-two"></div>
-          </div>
-          <div class="col-lg-2">
-            <div class="col-lg-8 row">
-              <i class="fa fa-star" ></i>
+            <div class="col-lg-10 row">
+              <div class="rating-bar rating-four"></div>
             </div>
-            <div class="col-lg-4">1</div>
           </div>
-          <div class="col-lg-10 row">
-            <div class="rating-bar rating-one"></div>
+          <div class="col-lg-12 row bar-block">
+            <div class="col-lg-3">
+              <div class="col-lg-8 row">
+                <i class="fa fa-star" ></i>
+              </div>
+              <div class="col-lg-4">3</div>
+            </div>
+            <div class="col-lg-10 row">
+              <div class="rating-bar rating-three"></div>
+            </div>
+          </div>
+          <div class="col-lg-12 row bar-block">
+            <div class="col-lg-3">
+              <div class="col-lg-8 row">
+                <i class="fa fa-star" ></i>
+              </div>
+              <div class="col-lg-4">2</div>
+            </div>
+            <div class="col-lg-10 row">
+              <div class="rating-bar rating-two"></div>
+            </div>
+          </div>
+          <div class="col-lg-12 row bar-block">
+            <div class="col-lg-3">
+              <div class="col-lg-8 row">
+                <i class="fa fa-star" ></i>
+              </div>
+              <div class="col-lg-4">1</div>
+            </div>
+            <div class="col-lg-10 row">
+              <div class="rating-bar rating-one"></div>
+            </div>
           </div>
         </div>
       </div>

@@ -10,6 +10,7 @@ import Application from '../api/application/application.model';
 import Review from '../api/review/review.model';
 import Category from '../api/application/application-category.model';
 var randomWords = require('random-words');
+var faker = require('faker');
 
 Thing.find({}).removeAsync()
   .then(() => {
@@ -279,7 +280,7 @@ function createApps(){
         currency: 'Rs',
         amount: (Math.floor(Math.random() * 999) + 1)
       },
-      description: 'This is the app description',
+      description: faker.lorem.paragraph(),
       media: [{
         type: 'image',
         file: 'image.png',

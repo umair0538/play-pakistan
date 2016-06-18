@@ -55,11 +55,26 @@
     updateRatingBars() {
       var self = this;
       setTimeout(function(){
-        $(".rating-five").css("width", self.application.fiveStar / self.application.totalRatings * 100 + "%")
-        $(".rating-four").css("width", self.application.fourStar / self.application.totalRatings * 100 + "%")
-        $(".rating-three").css("width", self.application.threeStar / self.application.totalRatings * 100 + "%")
-        $(".rating-two").css("width", self.application.twoStar / self.application.totalRatings * 100 + "%")
-        $(".rating-one").css("width", self.application.oneStar / self.application.totalRatings * 100 + "%")
+        var fiveStar = self.application.fiveStar / self.application.totalRatings * 100;
+        var fourStar = self.application.fourStar / self.application.totalRatings * 100;
+        var threeStar = self.application.threeStar / self.application.totalRatings * 100;
+        var twoStar = self.application.twoStar / self.application.totalRatings * 100;
+        var oneStar = self.application.oneStar / self.application.totalRatings * 100;
+        var max = fiveStar;
+        if(fourStar > max)
+          max = fourStar;
+        if(threeStar > max)
+          max = threeStar;
+        if(twoStar > max)
+          max = twoStar;
+        if(oneStar > max)
+          max = oneStar;
+        var mult = 100 / max;
+        $(".rating-five").css("width", self.application.fiveStar / self.application.totalRatings * 100 * mult + "%");
+        $(".rating-four").css("width", self.application.fourStar / self.application.totalRatings * 100 * mult + "%");
+        $(".rating-three").css("width", self.application.threeStar / self.application.totalRatings * 100 * mult + "%");
+        $(".rating-two").css("width", self.application.twoStar / self.application.totalRatings * 100 * mult + "%");
+        $(".rating-one").css("width", self.application.oneStar / self.application.totalRatings * 100 * mult + "%");
       }, 10)
     }
 

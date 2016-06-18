@@ -4,33 +4,31 @@
 
 class MainController {
 
-  constructor($http, $scope, socket) {
+  constructor($http, $scope, socket, $location) {
     this.$http = $http;
-    this.awesomeThings = [];
+    this.trending = [];
+    this.topFree = [];
+    this.topPaid = [];
+    this.$location = $location;
 
-    $http.get('/api/things').then(response => {
-      this.awesomeThings = response.data;
-      socket.syncUpdates('thing', this.awesomeThings);
+    $http.get('/api/applications/top/free').then(response => {
+      this.topFree = response.data;
     });
 
-    $scope.$on('$destroy', function() {
-      socket.unsyncUpdates('thing');
+    $http.get('/api/applications/top/paid').then(response => {
+      this.topPaid = response.data;
+    });
+
+    $http.get('/api/applications/top/trending').then(response => {
+      this.trending = response.data;
     });
   }
 
-  addThing() {
-    if (this.newThing) {
-      this.$http.post('/api/things', { name: this.newThing });
-      this.newThing = '';
-    }
-  }
-
-  deleteThing(thing) {
-    this.$http.delete('/api/things/' + thing._id);
+  openApplication(id) {
+    this.$location.path('/applications/' + id);
   }
 }
 
 angular.module('storeApp')
   .controller('MainController', MainController);
-
 })();

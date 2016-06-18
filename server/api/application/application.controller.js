@@ -107,9 +107,8 @@ export function applicationReviews(req, res) {
   var query = {application: req.params.id};
   if(req.query.userId)
     query.reviewer = req.query.userId;
-  Review.findAsync(query)
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+  var promise = Review.find(query).limit(4).execAsync();
+  promise.then(respondWithResult(res)).catch(handleError(res));
 }
 
 // Gets a single application Review from the DB

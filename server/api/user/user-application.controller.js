@@ -39,7 +39,15 @@ export function index(req, res) {
   UserApplication.findOneAsync({userId: req.user._id})
     .then(userApps => {
       if(userApps){
-        respondWithResult(res, 200)(userApps.applications);
+        var ids = [];
+        userApps.applications.forEach(function(userApp){
+          ids.push(userApp.applicationId);
+        });
+        Application.findAsync({_id: {$in: ids}})
+          .then(apps => {
+            respondWithResult(res, 200)(apps);
+          })
+          .catch(handleError(res));
       }else{
         respondWithResult(res, 200)([]);
       }

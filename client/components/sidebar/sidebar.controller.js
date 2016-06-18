@@ -4,7 +4,7 @@ class SidebarController {
   //start-non-standard
   menu = [{
     'title': 'Installed',
-    'state': '/'
+    'state': '/installed'
   },{
     'title': 'My Wishlist',
     'state': '/'

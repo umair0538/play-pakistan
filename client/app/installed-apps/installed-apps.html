@@ -1,0 +1,35 @@
+<navbar></navbar>
+<div class="row main-container">
+  <sidebar></sidebar>
+  <div class="col-lg-10">
+    <h3>Installed</h3>
+    <div class="well">
+      <div class="loader" ng-if="!InstalledCtrl.installed">
+        <span class="glyphicon glyphicon-refresh spinning"></span> Loading...
+      </div>
+      <div ng-if="InstalledCtrl.installed">
+        <div ng-if="InstalledCtrl.installed.length">
+          <div ng-repeat="item in InstalledCtrl.installed" class="app-container">
+            <div class="content" ng-click="InstalledCtrl.openApplication(item._id)">
+              <div class="image-container">
+                <img src="assets/images/vlc.webp"/>
+              </div>
+              <div class="title-container">
+                <span>{{item.name}}</span>
+              </div>
+              <div class="rating-container">
+                <star-rating ng-model="item.rating" readonly="true"></star-rating>
+                <span class="price">{{item.price.currency + " " + item.price.amount}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="no-item" ng-if="!InstalledCtrl.installed.length">
+          <i class="fa fa-frown-o"></i>
+          <br/>No Applications Installed!
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer></footer>

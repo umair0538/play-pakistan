@@ -33,6 +33,13 @@ angular.module('storeApp')
         controller: 'SettingsController',
         controllerAs: 'vm',
         authenticate: true
+      })
+      .state('profile', {
+        url: '/profile',
+        templateUrl: 'app/account/profile/profile.html',
+        controller: 'ProfileController',
+        controllerAs: 'ProfileCtrl',
+        authenticate: true
       });
   })
   .run(function($rootScope) {

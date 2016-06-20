@@ -5,7 +5,8 @@ var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 import {Schema} from 'mongoose';
 
 var UserSchema = new Schema({
-  name: String,
+  firstName: String,
+  lastName: String,
   email: {
     type: String,
     lowercase: true
@@ -16,7 +17,11 @@ var UserSchema = new Schema({
   },
   password: String,
   provider: String,
-  salt: String
+  salt: String,
+  country: String,
+  state: String,
+  city: String,
+  phone: String
 });
 
 /**
@@ -209,6 +214,15 @@ UserSchema.methods = {
         callback(null, key.toString('base64'));
       }
     });
+  },
+
+  setProfile(data){
+    this.firstName = data.firstName || this.firstName;
+    this.lastName = data.lastName || this.lastName;
+    this.country = data.country || this.country;
+    this.state = data.state || this.state;
+    this.city = data.city || this.city;
+    this.phone = data.phone || this.phone;
   }
 };
 

@@ -19,6 +19,16 @@ function handleError(res, statusCode) {
   };
 }
 
+function handleEntityNotFound(res) {
+  return function(entity) {
+    if (!entity) {
+      res.status(404).end();
+      return null;
+    }
+    return entity;
+  };
+}
+
 /**
  * Get list of users
  * restriction: 'admin'
@@ -113,6 +123,29 @@ export function me(req, res, next) {
       res.json(user);
     })
     .catch(err => next(err));
+}
+
+/**
+ * Update profile endpoint
+ * @param req
+ * @param res
+ * @param next
+ */
+export function updateProfile(req, res, next){
+  var data = req.body;
+  User.findByIdAsync(req.user._id)
+    .then(handleEntityNotFound(res))
+    .then(function(user){
+      if(user){
+        user.setProfile(data);
+        user.saveAsync()
+          .then(() => {
+            res.status(204).end();
+          })
+          .catch(handleError(res));
+      }
+    })
+    .catch(handleError(res));
 }
 
 /**
